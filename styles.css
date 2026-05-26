@@ -6,54 +6,88 @@
 }
 
 body{
-  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e0e0e0;
+  color: #333333;
+  padding: 40px 20px;
+  margin: 0;
 }
 
-header{
-  margin-top: 40px;
-  margin-bottom: 30px;
+header, main, #btnEnviar, footer{
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-header label{
-  font-size: 2rem;
-  font-weight: bold;
+header {
+  background-color: #003366;
   color: #ffffff;
-}
-
-main{
-  background-color: rgb(255, 255, 255, 0.88);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 20px;
-  width: 320px;
-  box-shadow: 0px 8px 25px rgb(0,0,0,0.3);
-}
-
-.campo{
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.campo label{
-  margin-bottom: 8px;
+  padding: 15px 20px;
+  border: 1px solid #002244;
+  font-size: 18px;
   font-weight: bold;
-  color: #ffffff;
 }
 
-.campo input{
-  padding: 12px;
-  border: 2px solid transparent;
-  border-radius: 10px;
+main {
+  background-color: #ffffff;
+  padding: 20px 20px 5px 20px;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
 }
 
-footer{
-  margin-top: 40px;
-  margin-bottom: 10px;
+.campo {
+  margin-bottom: 15px;
 }
 
-footer label{
-  font-size: 2rem;
+.campo label {
+  display: block;
+  margin-bottom: 5px;
   font-weight: bold;
+  color: #000000;
+  font-size: 14px;
+}
+
+input[type="text"]{
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #999999;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+input[type="text"]:focus {
+  border-color: #003366;
+  background-color: #f7fbff;
+  outline: none;
+}
+
+.error {
+  color: #cc0000;
+  font-size: 12px;
+  margin: 3px 0 0 0;
+  min-height: 15px;
+}
+
+#btnEnviar {
+  display: block;
+  width: 100%;
+  background-color: #003366;
   color: #ffffff;
+  border: 1px solid #002244;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: -1px;
+}
+
+#btnEnviar:hover {
+  background-color: #002244;
+}
+
+footer {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 12px;
+  color: #666666;
 }
