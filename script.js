@@ -25,7 +25,7 @@ function mostrarError(elementoError, elementoInput, mensaje) {
 
 function validarCampoTexto(valor, elementoInput, elementoError, nombreCampo) {
     if (valor === "") {
-        mostrarError(elementoError, elementoInput, "El campo  "+ nombreCampo + "no puede estar vacío.");
+        mostrarError(elementoError, elementoInput, "El campo  "+ nombreCampo + " no puede estar vacío.");
         return false;
     }
 
@@ -47,6 +47,23 @@ function validarCampos(){
     let apellidoValido = validarCampoTexto(apellido, inputApellido, errorApellido, "Apellido");
     let correoValido = validarCampoTexto(correo, inputCorreo, errorCorreo, "Correo");
     let cargoValido = validarCampoTexto(cargo, inputCargo, errorCargo, "Cargo");
+    const regexLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+    
+    if (nombreValido === true && !regexLetras.test(nombre)) {
+        mostrarError(errorNombre, inputNombre, "El nombre solo debe contener letras.");
+        nombreValido = false;
+    }
+
+    if (apellidoValido === true && !regexLetras.test(apellido)) {
+        mostrarError(errorApellido, inputApellido, "El apellido solo debe contener letras.");
+        apellidoValido = false;
+    }
+
+    if (correoValido === true && !correo.endsWith("@empresa.cl")) {
+        mostrarError(errorCorreo, inputCorreo, "El correo debe contener '@empresa.cl'");
+        correoValido = false;
+    }
+
 
     if (nombreValido === true && apellidoValido === true && correoValido === true && cargoValido === true) {
         return true;
