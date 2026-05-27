@@ -9,12 +9,35 @@ const errorApellido = document.getElementById("errorApellido");
 const errorCorreo = document.getElementById("errorCorreo");
 const errorCargo = document.getElementById("errorCargo");
 
+let colaboradores = [];
+
+function mostrarColaboradores() {
+    const cuerpoTabla = document.getElementById("cuerpoTabla");
+    cuerpoTabla.innerHTML = "";
+
+    colaboradores.forEach(colaborador => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td>${colaborador.nombre}</td>
+            <td>${colaborador.apellido}</td>
+            <td>${colaborador.cargo}</td>
+            <td>${colaborador.correo}</td>
+        `;
+        cuerpoTabla.appendChild(fila);
+    });
+    
+}
 
 function limpiarErrores() {
     errorNombre.textContent = "";
     errorApellido.textContent = "";
     errorCorreo.textContent = "";
     errorCargo.textContent = "";
+
+    inputNombre.classList.remove('Invalido', 'Valido');
+    inputApellido.classList.remove('Invalido', 'Valido');
+    inputCargo.classList.remove('Invalido', 'Valido');
+    inputCorreo.classList.remove('Invalido', 'Valido');
 }
 
 function mostrarError(elementoError, elementoInput, mensaje) {
@@ -34,6 +57,11 @@ function validarCampoTexto(valor, elementoInput, elementoError, nombreCampo) {
         return false;
     }
 
+    if (valor.length > 30) {
+        mostrarError(elementoError, elementoInput, "Máximo 30 caracteres.");
+        return false;
+    }
+
     return true;
 }
 
@@ -47,6 +75,7 @@ function validarCampos(){
     let apellidoValido = validarCampoTexto(apellido, inputApellido, errorApellido, "Apellido");
     let correoValido = validarCampoTexto(correo, inputCorreo, errorCorreo, "Correo");
     let cargoValido = validarCampoTexto(cargo, inputCargo, errorCargo, "Cargo");
+
     const regexLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
     
     if (nombreValido === true && !regexLetras.test(nombre)) {
@@ -83,15 +112,25 @@ function registrar(){
         let cargo = inputCargo.value.trim();
         let correo = inputCorreo.value.trim();
 
-        console.log("Intentando registrar:", nombre, apellido, cargo, correo);
-        alert("Registro exitoso para: " + nombre + " " + apellido);
-    }else{
-        console.log("Formulario no válido. No se puede registrar.");
+        let nuevoColaborador = {
+            nombre: nombre,
+            apellido: apellido,
+            cargo: cargo,
+            correo: correo
+        };
+
+        colaboradores.push(nuevoColaborador);
+
+        inputNombre.value = "";
+        inputApellido.value = "";
+        inputCargo.value = "";
+        inputCorreo.value = "";
+
+        mostrarColaboradores();
+
+    } else {
+        console.log("Formulario no válido");
     }
-
-    
-
-
 }
 
 btnEnviar.addEventListener("click", registrar);

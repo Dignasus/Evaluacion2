@@ -129,3 +129,16 @@ footer {
   font-size: 12px;
   color: #666666;
 }
+
+  .tabla_sql {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  .tabla_sql th, .tabla_sql td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+  }
