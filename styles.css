@@ -142,3 +142,29 @@ footer {
     text-align: left;
     font-size: 14px;
   }
+
+  .zona_filtro {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .zona_filtro label {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  #inputFiltro {
+    flex-content: 1;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+    outline: none;
+  }
+
+  #inputFiltro:focus {
+    border-color: #003366;
+    background-color: #f7fbff;
+  }

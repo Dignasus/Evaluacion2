@@ -3,6 +3,7 @@ const inputNombre = document.getElementById("nombre");
 const inputApellido = document.getElementById("apellido");
 const inputCargo = document.getElementById("cargo");
 const inputCorreo = document.getElementById("correo");
+const inputFiltro = document.getElementById("inputFiltro");
 
 const errorNombre = document.getElementById("errorNombre");
 const errorApellido = document.getElementById("errorApellido");
@@ -11,11 +12,12 @@ const errorCargo = document.getElementById("errorCargo");
 
 let colaboradores = [];
 
-function mostrarColaboradores() {
+function mostrarColaboradores(arregloPorMostrar = colaboradores) {
     const cuerpoTabla = document.getElementById("cuerpoTabla");
     cuerpoTabla.innerHTML = "";
 
-    colaboradores.forEach(colaborador => {
+    
+    arregloPorMostrar.forEach(colaborador => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
             <td>${colaborador.nombre}</td>
@@ -26,6 +28,20 @@ function mostrarColaboradores() {
         cuerpoTabla.appendChild(fila);
     });
     
+}
+
+function filtrarColaboradores() {
+    let termino= inputFiltro.value.toLowerCase().trim();
+    let colaboradoresFiltrados = colaboradores.filter(colaborador =>{
+        return (
+            colaborador.nombre.toLowerCase().includes(termino) ||
+            colaborador.apellido.toLowerCase().includes(termino) ||
+            colaborador.cargo.toLowerCase().includes(termino) ||
+            colaborador.correo.toLowerCase().includes(termino)
+        );
+    });
+
+    mostrarColaboradores(colaboradoresFiltrados);
 }
 
 function limpiarErrores() {
@@ -93,6 +109,13 @@ function validarCampos(){
         correoValido = false;
     }
 
+    if (correoValido === true){
+        let correoExistente = colaboradores.some(colaborador => colaborador.correo === correo);
+        if (correoExistente) {
+            mostrarError(errorCorreo, inputCorreo, "El correo ya esta registrado.");
+            correoValido = false;
+        }
+    }
 
     if (nombreValido === true && apellidoValido === true && correoValido === true && cargoValido === true) {
         return true;
@@ -126,6 +149,8 @@ function registrar(){
         inputCargo.value = "";
         inputCorreo.value = "";
 
+        inputFiltro.value = "";
+
         mostrarColaboradores();
 
     } else {
@@ -135,4 +160,4 @@ function registrar(){
 
 btnEnviar.addEventListener("click", registrar);
 
-
+inputFiltro.addEventListener("input", filtrarColaboradores);
