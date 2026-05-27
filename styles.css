@@ -1,3 +1,41 @@
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.columna_formulario {
+  width: 100%;
+  max-width: 450px;
+}
+
+.columna_datos {
+  width: 100%;
+  max-width: 500px;
+}
+
+.tarjeta_datos {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  min-height: 350px;
+}
+
+.header_datos {
+  background-color: #003366;
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#listaColaboradores {
+  padding: 20px;
+}
+
 *{
   margin: 0;
   padding: 0;

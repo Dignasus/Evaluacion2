@@ -7,42 +7,56 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <label>Formulario de Registro</label>
-    </header>
+    <div class="contenedor">
+        <section class= "columna_formulario">
 
-    <main>
-        <div class="campo">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" placeholder="Ej: Ana">
-            <p id="errorNombre" class="error"></p>
-          </div>
+            <header>
+                <label>Formulario de Registro</label>
+            </header>
 
-        <div class="campo">
-            <label for="apellido">Apellido</label>
-            <input type="text" id="apellido" placeholder="Ej: Millaqueo">
-            <p id="errorApellido" class="error"></p>
-        </div>
+            <main>
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" placeholder="Ej: Ana">
+                    <p id="errorNombre" class="error"></p>
+                </div>
 
-        <div class="campo">
-            <label for="cargo">Cargo</label>
-            <input type="text" id="cargo" placeholder="Ej: Colaborador">
-            <p id="errorCargo" class="error"></p>
-        </div>
+                <div class="campo">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" placeholder="Ej: Millaqueo">
+                    <p id="errorApellido" class="error"></p>
+                </div>
 
-        <div class="campo">
-            <label for="correo">Correo</label>
-            <input type="text" id="correo" placeholder="Ej: alguien@empresa.cl">
-            <p id="errorCorreo" class="error"></p>
-        </div>
+                <div class="campo">
+                    <label for="cargo">Cargo</label>
+                    <input type="text" id="cargo" placeholder="Ej: Colaborador">
+                    <p id="errorCargo" class="error"></p>
+                </div>
 
-    </main>
+                <div class="campo">
+                    <label for="correo">Correo</label>
+                    <input type="text" id="correo" placeholder="Ej: alguien@empresa.cl">
+                    <p id="errorCorreo" class="error"></p>
+                </div>
 
-    <button id="btnEnviar">Enviar</button>
+            </main>
 
-    <footer>
-        <label>Empresa CL ©Derechos reservados</label>
-    </footer>
+            <button id="btnEnviar">Enviar</button>
+
+            <footer>
+                <label>Empresa CL ©Derechos reservados</label>
+            </footer>
+        </section>
+
+        <section class="columna_datos">
+            <div class="tarjeta_datos" id="tarjetaDatos">
+                <header class="header_datos">Colaboradores Registrados</header>
+                <div id="listaColaboradores">
+                    <p>No hay colaboradores registrados.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
