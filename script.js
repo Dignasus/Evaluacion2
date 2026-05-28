@@ -144,7 +144,7 @@ function validarCampos(){
             correoValido = false;
         }
     }
-
+    // Retorno true solo si todos los campos son validos
     if (nombreValido === true && apellidoValido === true && correoValido === true && cargoValido === true) {
         return true;
     } else {
@@ -153,16 +153,17 @@ function validarCampos(){
 }
 
 function registrar(){
+    // Primero limpio errores anteriores
     limpiarErrores();
-
+    // Valido los campos del formulario
     let formularioEsValido = validarCampos();
-
+    // Si todo esta correcto se registra el colaborador
     if (formularioEsValido){
         let nombre = inputNombre.value.trim();
         let apellido = inputApellido.value.trim();
         let cargo = inputCargo.value.trim();
         let correo = inputCorreo.value.trim.toLowerCase();
-
+        // Crea el nuevo colaborador
         let nuevoColaborador = {
             id: Date.now().toString(),
             nombre: nombre,
@@ -170,23 +171,24 @@ function registrar(){
             cargo: cargo,
             correo: correo
         };
-
+        // Guardo el colaborador en el array
         colaboradores.push(nuevoColaborador);
-
+        // Limpio los inputs
         inputNombre.value = "";
         inputApellido.value = "";
         inputCargo.value = "";
         inputCorreo.value = "";
-
+        // Limpio tambien el filtro
         inputFiltro.value = "";
-
+        // Actualizo la tabla
         mostrarColaboradores();
 
     } else {
+        // Mensaje de error en consola si el formulario no es valido
         console.log("Formulario no válido");
     }
 }
-
+// Evento click para el boton de registrar
 btnEnviar.addEventListener("click", registrar);
-
+// Evento filtrar automaticamente mientras se escribe
 inputFiltro.addEventListener("input", filtrarColaboradores);
