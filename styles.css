@@ -33,7 +33,8 @@
 }
 
 #listaColaboradores {
-  padding: 20px;
+  width: 100%;
+  overflow-x: auto;
 }
 
 *{
@@ -130,32 +131,33 @@ footer {
   color: #666666;
 }
 
-  .tabla_sql {
+.tabla_sql {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    table-layout: auto;
   }
 
-  .tabla_sql th, .tabla_sql td {
+.tabla_sql th, .tabla_sql td {
     border: 1px solid #cccccc;
     padding: 10px;
     text-align: left;
     font-size: 14px;
   }
 
-  .zona_filtro {
+.zona_filtro {
     margin-top: 15px;
     display: flex;
     gap: 10px;
     align-items: center;
   }
 
-  .zona_filtro label {
+.zona_filtro label {
     font-weight: bold;
     font-size: 14px;
   }
 
-  #inputFiltro {
+#inputFiltro {
     flex-content: 1;
     width: 100%;
     padding: 8px;
@@ -164,21 +166,23 @@ footer {
     outline: none;
   }
 
-  #inputFiltro:focus {
+#inputFiltro:focus {
     border-color: #003366;
     background-color: #f7fbff;
   }
 
-  .btn-eliminar {
+.btn-eliminar {
     background-color: #cc0000;
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 5px 10px;
+    font-size: 13px;
     cursor: pointer;
     border-radius: 4px;
     font-weight: bold;
+    white-space: nowrap;
   }
 
-  .btn-eliminar:hover {
+.btn-eliminar:hover {
     background-color: #990000;
   }
