@@ -24,10 +24,24 @@ function mostrarColaboradores(arregloPorMostrar = colaboradores) {
             <td>${colaborador.apellido}</td>
             <td>${colaborador.cargo}</td>
             <td>${colaborador.correo}</td>
+            <td>
+                <button type="button" class="btn-eliminar">Eliminar</button>
+            </td>
         `;
+        const btnEliminar = fila.querySelector(".btn-eliminar");
+
+        btnEliminar.addEventListener("click", function() {
+            eliminarColaborador(colaborador.id);
+        });
+        
         cuerpoTabla.appendChild(fila);
     });
     
+}
+
+function eliminarColaborador(idRecibido) {
+    colaboradores = colaboradores.filter(colaborador => colaborador.id !== idRecibido);
+    filtrarColaboradores();
 }
 
 function filtrarColaboradores() {
@@ -136,6 +150,7 @@ function registrar(){
         let correo = inputCorreo.value.trim();
 
         let nuevoColaborador = {
+            id: Date.now().toString(),
             nombre: nombre,
             apellido: apellido,
             cargo: cargo,
